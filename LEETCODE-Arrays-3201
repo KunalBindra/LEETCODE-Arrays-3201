@@ -1,0 +1,26 @@
+class Solution {
+    public int maximumLength(int[] nums) {
+        int counteven=0;
+        int oddcount=0;
+        for(int c:nums)
+        {
+            if(c%2==0) counteven++;
+            else{
+                oddcount++;
+            }
+        }
+        int count=1;
+        int prevparity=nums[0]%2;
+        for(int i=1;i<nums.length;i++)
+        {
+            int currparity=nums[i]%2;
+            if(currparity!=prevparity)
+            {
+                count++;
+                prevparity=currparity;
+            }
+        }
+        return Math.max(Math.max(counteven, oddcount),count);
+
+    }
+}
